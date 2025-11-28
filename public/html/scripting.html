@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scripting with Lua</title>
+  <link href="../styles/styles.css" rel="stylesheet">
+</head>
+<body>
+  <div class="navbar">
+    <div class="logo">Smash Hit Modding</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="#">Tutorial</a>
+    </div>
+  </div>
+  <div class="content">
+    <h1 style="margin-bottom: 10px;">How to script with Lua</h1>
+    <p>Lua is a powerful, efficient, lightweight, embeddable scripting language. It is designed for checkpoints, powerups, and more. In this tutorial, we will cover the basics of scripting with Lua for Smash Hit Modding.</p>
+    <h2>Basics for Main Game Functions</h2>
+    <p>Main Game functions allow you to manipulate various aspects of the game environment. Below are some examples of how to use these functions. Functions starts with <code>mg</code>.</p>
+    <h2>Setting Fog Color</h2>
+    <p>Sets the fog color in the checkpoint, a solid color can only take 3 parameters (R, G, B), while a gradient color takes 6 parameters (R1, G1, B1, R2, G2, B2).</p>
+    <pre>mgFogColor(0.5, 0.7, 1.0, 1.0, 0.2, 0.9) -- Sets fog color to light blue gradient</pre>
+    <h2>Setting Gravity</h2>
+    <p>You can set the gravity of a checkpoint, but it only takes 1 parameter. If less than 0 is set, objects will float upwards. If greater than 0, objects will fall downwards, and if equal to 0 objects will float and stay in place.</p>
+    <pre>mgGravity(0.5) -- Sets gravity</pre>
+    <h2>Setting Crystal's Score</h2>
+    <p>You can set the crystal's score by having the amount of balls gain per hit, and can design by making custom crystals or shapes.</p>
+    <pre>mgScore(100, x, getY(), z) -- Gains 100 balls when crystal is breaked</pre>
+    <h2>Getting a boolean</h2>
+    <p>Getting a boolean means how to get the value. For example, it will return true because the boss is near the player, recommended for if statements.</p>
+    <pre>mgIsClosestBoss() -- Returns true if the closest boss is near the player, otherwise returns false. Does not take any parameters, can be used for if statements.<br>mgGetBool("boom", false) -- Gets a boolean value from a checkpoint, "boom" is the name of the boolean, false is the default value if the boolean does not exist.</pre>
+    <button class="btn" id="readBtn">Read text</button>
+  </div>
+  <script>
+    const readBtn = document.getElementById('readBtn');
+    const content = document.querySelector('.content');
+    readBtn.addEventListener('click', function() {
+      readBtn.disabled = true;
+      const textToRead = Array.from(content.querySelectorAll('p, li'))
+                        .map(p => p.innerText)
+                        .join(' ');
+      const utterance = new SpeechSynthesisUtterance(textToRead);
+      speechSynthesis.speak(utterance);
+      utterance.pitch = 1;
+      utterance.rate = 1;
+      utterance.volume = 1;
+      utterance.onend = function() {
+        readBtn.disabled = false;
+      };
+    });
+  </script>
+</body>
+</html>

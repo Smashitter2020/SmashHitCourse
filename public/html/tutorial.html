@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutorial</title>
+  <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+  <div class="navbar">
+    <div class="logo">Smash Hit Modding</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="#">Tutorial</a>
+    </div>
+  </div>
+  <div class="content">
+    <h1 style="margin-bottom: 10px;">Tutorial</h1>
+    <p>Welcome to the Smash Hit Modding tutorial! This guide will help you get started with modding the popular game Smash Hit. Follow the steps below to set up your modding environment and start creating your own mods.</p>
+    <h2>Tools you'll need:</h2>
+    <ul>
+      <li><strong>APK Editor Studio</strong> - A powerful tool for editing Android APK files.</li>
+      <li><strong>Blender</strong> - A free and open-source 3D modeling software.</li>
+      <li><strong>Shatter OSS</strong> - An addon for Blender that helps create segments and checkpoints for Smash Hit.</li>
+      <li><strong>Notepad++</strong> - A versatile text editor for coding and scripting for Lua.</li>
+    </ul>
+    <h2 style="margin-top: 30px;">Getting Started</h2>
+    <p>To start modding Smash Hit, follow these steps:</p>
+    <ol>
+      <li>Download and install APK Editor Studio, Blender, Shatter OSS, and Notepad++ on your PC.</li>
+      <li>Use APK Editor Studio to extract the Smash Hit APK file.</li>
+      <li>Open the extracted files in Blender using the Shatter OSS addon to create or modify segments and checkpoints.</li>
+      <li>Edit any necessary scripts or configurations using Notepad++.</li>
+      <li>Repackage the modified files back into an APK using APK Editor Studio.</li>
+      <li>Install the modified APK on your device and test your changes!</li>
+      <li>Open your mod in Smash Hit and enjoy your custom content!</li>
+    </ol>
+    <p>For more detailed instructions and tips, check out our <a href="#">Modding Guide</a> and <a href="#">Community Forums</a>.</p>
+    <button class="btn" id="readBtn">Read text</button>
+  </div>
+  <script>
+    const readBtn = document.getElementById('readBtn');
+    const content = document.querySelector('.content');
+    readBtn.addEventListener('click', function() {
+      readBtn.disabled = true;
+      const textToRead = Array.from(content.querySelectorAll('p, li'))
+                        .map(p => p.innerText)
+                        .join(' ');
+      const utterance = new SpeechSynthesisUtterance(textToRead);
+      speechSynthesis.speak(utterance);
+      utterance.pitch = 1;
+      utterance.rate = 1;
+      utterance.volume = 1;
+      utterance.onend = function() {
+        readBtn.disabled = false;
+      };
+    });
+  </script>
+</body>
+</html>

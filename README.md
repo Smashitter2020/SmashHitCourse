@@ -1,2 +1,2 @@
 # SmashHitCourse
-Welcome to **Smash Hit Course**, an interactive learning experience designed to help you master concepts step by step while keeping engagement high. This repository contains all course materials, exercises, and resources you’ll need to succeed
+Welcome to **Smash Hit Course**, an interactive learning experience designed to help you master by creating mods for Smash Hit, the popular mobile game. This course will guide you through the process of modding, from basic concepts to advanced techniques, with creating custom checkpoints and scripting with Lua.

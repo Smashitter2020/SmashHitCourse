@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkpoint Basics</title>
+</head>
+<body>
+  <div class="navbar">
+    <div class="logo">Smash Hit Modding</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="#">Tutorial</a>
+    </div>
+  </div>
+  <div class="content">
+    <h1>Checkpoint Basics</h1>
+    <p>Learn how to make checkpoints for Smash Hit using Shatter OSS, Blender, and an XML level file.</p>
+    <h2>Creating a Custom Checkpoint</h2>
+    <p>Creating a custom checkpoint involves creating custom segments. Here are the steps to create a custom checkpoint:</p>
+    <ol>
+      <li>Make sure to have Shatter OSS and Blender.</li>
+      <li>Start designing your checkpoint using tools.</li>
+      <li>Once design is complete, export the model in a compatible format.</li>
+      <li>Make sure to save it in a Smash Hit APK file.</li>
+    </ol>
+    <h2>Scripting a Checkpoint</h2>
+    <p>To script a checkpoint, you will need to write code that defines the behavior of the checkpoint, including fog colors and echo effects. Here is a simple example of how to script a checkpoint:</p>
+    <pre>function init() -- Runs once at the start when the room is loaded
+    -- Your initialization code here
+end<br>
+function tick() -- Runs every frame approximately 60 times per second
+    -- Your per-frame code here
+end</pre>
+    <h2>Level File</h2>
+    <p>The level file is where you find checkpoints in order using the XML structure. Here is an example of how checkpoints are defined in a level file:</p>
+    <pre>&lt;level&gt;
+    &lt;room type="night/part1" length="250" start="true" end="true"/&gt;
+    &lt;room type="night/part2" length="250" start="true" end="false"/&gt;
+    &lt;room type="night/part2" length="250" start="false" end="true"/&gt;
+    &lt;room type="night/part3" length="250" start="true" end="true"/&gt;
+    &lt;room type="night/boss" length="100"/&gt;<br>&lt;/level&gt;</pre>
+    <p>In this example, each room element represents a segment of the level, with attributes defining the type, length, and whether it is a start or end segment.</p>
+    <button class="btn" id="readBtn">Read text</button>
+  </div>
+  <script>
+    const readBtn = document.getElementById('readBtn');
+    const content = document.querySelector('.content');
+    readBtn.addEventListener('click', function() {
+      readBtn.disabled = true;
+      const textToRead = Array.from(content.querySelectorAll('p, li'))
+                        .map(p => p.innerText)
+                        .join(' ');
+      const utterance = new SpeechSynthesisUtterance(textToRead);
+      speechSynthesis.speak(utterance);
+      utterance.pitch = 1;
+      utterance.rate = 1;
+      utterance.volume = 1;
+      utterance.onend = function() {
+        readBtn.disabled = false;
+      };
+    });
+  </script>
+</body>
+</html>
