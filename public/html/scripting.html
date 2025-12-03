@@ -31,6 +31,12 @@
     <h2>Getting a boolean</h2>
     <p>Getting a boolean means how to get the value. For example, it will return true because the boss is near the player, recommended for if statements.</p>
     <pre>mgIsClosestBoss() -- Returns true if the closest boss is near the player, otherwise returns false. Does not take any parameters, can be used for if statements.<br>mgGetBool("boom", false) -- Gets a boolean value from a checkpoint, "boom" is the name of the boolean, false is the default value if the boolean does not exist.</pre>
+    <h2>Important Notes</h2>
+    <ul>
+      <li>Avoid adding <code>while true do</code> inside the checkpoint, which can create infinite loops and cause Smash Hit mods to crash.</li>
+      <li>Be careful of writing the script, make sure there are no syntax errors in the code, which causes it to crash.</li>
+      <li>Make sure to add <code>init()</code> and <code>tick()</code> in these functions, otherwise it will not work properly.</li>
+    </ul>
     <button class="btn" id="readBtn">Read text</button>
   </div>
   <script>
@@ -38,9 +44,7 @@
     const content = document.querySelector('.content');
     readBtn.addEventListener('click', function() {
       readBtn.disabled = true;
-      const textToRead = Array.from(content.querySelectorAll('p, li'))
-                        .map(p => p.innerText)
-                        .join(' ');
+      const textToRead = Array.from(content.querySelectorAll('p, li')).map(p => p.innerText).join(' ');
       const utterance = new SpeechSynthesisUtterance(textToRead);
       speechSynthesis.speak(utterance);
       utterance.pitch = 1;
