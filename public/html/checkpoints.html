@@ -31,7 +31,51 @@
     -- Your initialization code here
 end<br>
 function tick() -- Runs every frame approximately 60 times per second
-    -- Your per-frame code here
+end</pre>
+    <h3>Example Script</h3>
+    <p>Here is an example of a checkpoint script:</p>
+    <pre>function init()
+    pStart = mgGetBool("pStart", false) -- Retrieves a boolean parameter named "pStart"
+    pEnd = mgGetBool("pEnd", false) -- Retrieves a boolean parameter named "pEnd"
+
+    mgReverb(0.3, 0.8, 0.2) -- Sets the reverb effect parameters
+    mgEcho(0.7, 0.8, 0.9, 1.0) -- Sets the echo effect parameters
+    mgLowPass(math.random()) -- Sets a random low-pass filter value
+
+    mgFogColor(1.6, 1.4, 2, -.8, 0, 0) -- Sets the fog color parameters
+    mgGravity(1.0) -- Sets the gravity for the room
+
+    mgMusic("1") -- Sets the music
+    mgSetRotation(1) -- Sets the rotation for the room
+    
+    -- Segment configuration
+    confSegment("basic/darker/bs", 1)
+    confSegment("basic/darker/2_bs_arch", 1)
+    confSegment("basic/darker/chasms", 1)
+    confSegment("basic/darker/chasms_bs", 1)
+    confSegment("basic/darker/powerup", 1, 1)
+
+    l = 0
+
+    if pStart then
+        l = l + mgSegment("basic/darker/start", -l) -- Adds a starting segment if pStart is true
+    end
+
+    local targetLen = 300
+
+    while l &lt; targetLen do 
+        s = nextSegment() -- Gets the next segment
+        l = l + mgSegment(s, -l) -- Adds the segment to the room
+    end
+
+    if pEnd then
+        l = l + mgSegment("basic/darker/door", -l) -- Adds an ending segment if pEnd is true
+    end
+
+    mgLength(l) -- Sets the total length of the room
+end
+
+function tick()
 end</pre>
     <h2>Level File</h2>
     <p>The level file is where you find checkpoints in order using the XML structure. Here is an example of how checkpoints are defined in a level file:</p>
@@ -49,9 +93,7 @@ end</pre>
     const content = document.querySelector('.content');
     readBtn.addEventListener('click', function() {
       readBtn.disabled = true;
-      const textToRead = Array.from(content.querySelectorAll('p, li'))
-                        .map(p => p.innerText)
-                        .join(' ');
+      const textToRead = Array.from(content.querySelectorAll('p, li')).map(p => p.innerText).join(' ');
       const utterance = new SpeechSynthesisUtterance(textToRead);
       speechSynthesis.speak(utterance);
       utterance.pitch = 1;
