@@ -31,6 +31,13 @@
     <h2>Getting a boolean</h2>
     <p>Getting a boolean means how to get the value. For example, it will return true because the boss is near the player, recommended for if statements.</p>
     <pre>mgIsClosestBoss() -- Returns true if the closest boss is near the player, otherwise returns false. Does not take any parameters, can be used for if statements.<br>mgGetBool("boom", false) -- Gets a boolean value from a checkpoint, "boom" is the name of the boolean, false is the default value if the boolean does not exist.</pre>
+    <h2>UI Elements</h2>
+    <p>UI elements are created inside the <code>init()</code> function. Here is an example of creating a UI element in Smash Hit:</p>
+    <pre>function init()
+    coolImage = mgCreateImage("image.png") -- Creates an image UI element
+    perfectUi = mgCreateUi("perfect.xml") -- Creates a UI element from an XML file
+    niceText = mgCreateText("numbers", true) -- specifies the font and size
+end</pre>
     <h2>Best Practices</h2>
     <ul>
       <li>Avoid adding <code>while true do</code> inside the checkpoint, which can create infinite loops and cause Smash Hit mods to crash.</li>

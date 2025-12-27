@@ -85,7 +85,12 @@ end</pre>
     &lt;room type="night/part2" length="250" start="false" end="true"/&gt;
     &lt;room type="night/part3" length="250" start="true" end="true"/&gt;
     &lt;room type="night/boss" length="100"/&gt;<br>&lt;/level&gt;</pre>
-    <p>In this example, each room element represents a segment of the level, with attributes defining the type, length, and whether it is a start or end segment.</p>
+    <ul>
+      <li>Each <code>&lt;room&gt;</code> tag defines a checkpoint with attributes for <code>type</code>, <code>length</code>, <code>start</code>, and <code>end</code>.</li>
+      <li>The <code>type</code> attribute specifies the segment type.</li>
+      <li>The <code>length</code> attribute specifies the length of the segment. It defines how long the room is.</li>
+      <li>The <code>start</code> and <code>end</code> attributes indicate if the segment is a starting or ending checkpoint. If <code>false</code>, then the room will repeat again more longer.</li>
+    </ul>
     <button class="btn" id="readBtn">Read text</button>
   </div>
   <script>

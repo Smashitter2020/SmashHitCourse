@@ -52,7 +52,7 @@ function tick()
         mgCameraShake(0.5)
         mgPlaySound(snd)
     end
-    if mgCameraDistance() < distance and not released then
+    if mgCameraDistance() &lt; distance and not released then
         mgReleaseMotion(b)
         mgSetVel(b, vx, vy, vz)
         mgSetAngVel(b, ax, ay, az)
