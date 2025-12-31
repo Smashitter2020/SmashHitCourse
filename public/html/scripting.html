@@ -16,7 +16,8 @@
   </div>
   <div class="content">
     <h1 style="margin-bottom: 10px;">How to script with Lua</h1>
-    <p>Lua is a powerful, efficient, lightweight, embeddable scripting language. It is designed for checkpoints, powerups, and more. In this tutorial, we will cover the basics of scripting with Lua for Smash Hit Modding.</p>
+    <div class="alert"><strong>Note:</strong> Always use Notepad++. It is recommended to use this text editor for writing Lua scripts, as it provides syntax highlighting and other useful features for coding. Microsoft Notepad is not recommended because it is limited due to plain, uncolored text, and less syntax highlighting.</div>
+    <p>Smash Hit Modding is built with Lua, a powerful, efficient, lightweight, embeddable scripting language. It is designed for checkpoints, powerups, and more. In this tutorial, we will cover the basics of scripting with Lua for Smash Hit Modding.</p>
     <h2>Basics for Main Game Functions</h2>
     <p>Main Game functions allow you to manipulate various aspects of the game environment. Below are some examples of how to use these functions. Functions starts with <code>mg</code>.</p>
     <h2>Setting Fog Color</h2>
@@ -29,7 +30,7 @@
     <p>You can set the crystal's score by having the amount of balls gain per hit, and can design by making custom crystals or shapes.</p>
     <pre>mgScore(100, x, getY(), z) -- Gains 100 balls when crystal is breaked</pre>
     <h2>Getting a boolean</h2>
-    <p>Getting a boolean means how to get the value. For example, it will return true because the boss is near the player, recommended for if statements.</p>
+    <p>Getting a boolean means how to get the value. For example, it will return <code>true</code> because the boss is near the player, recommended for <code>if</code> statements.</p>
     <pre>mgIsClosestBoss() -- Returns true if the closest boss is near the player, otherwise returns false. Does not take any parameters, can be used for if statements.<br>mgGetBool("boom", false) -- Gets a boolean value from a checkpoint, "boom" is the name of the boolean, false is the default value if the boolean does not exist.</pre>
     <h2>UI Elements</h2>
     <p>UI elements are created inside the <code>init()</code> function. Here is an example of creating a UI element in Smash Hit:</p>

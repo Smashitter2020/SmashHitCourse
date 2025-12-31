@@ -20,10 +20,10 @@
     <h2>Tools you'll need:</h2>
     <h3>On PC</h3>
     <ul>
-      <li><strong>APK Editor Studio</strong> - A powerful tool for editing Android APK files.</li>
-      <li><strong>Blender</strong> - A free and open-source 3D modeling software.</li>
+      <li><strong><a href="https://qwertycube.com/apk-editor-studio/" target="_blank">APK Editor Studio</a></strong> - A powerful tool for editing Android APK files.</li>
+      <li><strong><a href="https://blender.org" target="_blank">Blender</a></strong> - A free and open-source 3D modeling software.</li>
       <li><strong>Shatter OSS</strong> - An addon for Blender that helps create segments and checkpoints for Smash Hit.</li>
-      <li><strong>Notepad++</strong> - A versatile text editor for coding and scripting for Lua.</li>
+      <li><strong><a href="https://notepad-plus-plus.org" target="_blank">Notepad++</a></strong> - A versatile text editor for coding and scripting for Lua.</li>
     </ul>
     <h3>On Android</h3>
     <ul>
@@ -31,7 +31,7 @@
       <li><strong>Total Commander</strong> - A file manager app for Android that helps you manage files on your device, including text editor.</li>
     </ul>
     <h2 style="margin-block: 15px;">File Stucture</h2>
-    <p>A file stucture that appears like this inside the <code>assets</code> folder:</p>
+    <p>A file stucture that appears like this inside the <code>assets</code> folder. Make sure to do it correctly:</p>
     <pre>assets/
     ├── about/
     │   └── main.lua.mp3
@@ -71,7 +71,15 @@
       <li>After IP address is set, you may need to set the level in the list.</li>
       <li>Once connected, hit the Start button and enjoy your custom level!</li>
     </ol>
-    <p>For more detailed instructions and tips, check out our <a href="#">Modding Guide</a> and <a href="#">Community Forums</a>.</p>
+    <h2 style="margin-top: 30px;">Troubleshooting</h2>
+    <p>If the Smash Hit mod is experiencing crashes, here are a couple options to fix:</p>
+    <ol>
+      <li>Try using a different version of Smash Hit APK. Some versions like 1.5.0 or newer has broken instability because it wasn't stable.</li>
+      <li>Check if the segments and checkpoints are setup correctly in Blender using Shatter OSS.</li>
+      <li>Always check the Lua code to have no syntax errors inside a checkpoint. Try testing the checkpoint if is causing an error.</li>
+      <li>Make sure all necessary files are included in the correct folders inside the assets directory.</li>
+    </ol>
+    <p>For more detailed instructions and tips, check out our <a href="https://sites.google.com/view/smashhitlab/documentation/modding-guide" target="_blank">Modding Guide</a>.</p>
     <button class="btn" id="readBtn">Read text</button>
   </div>
   <script>
